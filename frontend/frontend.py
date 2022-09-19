@@ -22,11 +22,19 @@ def draw_gradio_ui(opt, img2img=lambda x: x, txt2img=lambda x: x, imgproc=lambda
                                                 elem_id='prompt_input',
                                                 placeholder="A corgi wearing a top hat as an oil painting.",
                                                 lines=1,
-                                                max_lines=1 if txt2img_defaults['submit_on_enter'] == 'Yes' else 25,
+                                                max_lines=10 if txt2img_defaults['submit_on_enter'] == 'Yes' else 25,
                                                 value=txt2img_defaults['prompt'],
                                                 show_label=False)
                     txt2img_btn = gr.Button("Generate", elem_id="generate", variant="primary")
-
+                with gr.Row(elem_id="style_prompt_row"):
+                    txt2img_style_prompt = gr.Textbox(label="Style Prompt",
+                                                elem_id='prompt_input',
+                                                placeholder="A corgi wearing a top hat as an oil painting.",
+                                                lines=1,
+                                                max_lines=10 if txt2img_defaults['submit_on_enter'] == 'Yes' else 25,
+                                                value=txt2img_defaults['style prompt'],
+                                                show_label=False)
+                    txt2img_btn = gr.Button("Generate", elem_id="generate", variant="primary")
                 with gr.Row(elem_id='body').style(equal_height=False):
                     with gr.Column():
                         txt2img_width = gr.Slider(minimum=64, maximum=1024, step=64, label="Width",
@@ -116,7 +124,7 @@ def draw_gradio_ui(opt, img2img=lambda x: x, txt2img=lambda x: x, imgproc=lambda
                                                      visible=show_embeddings)
 
                 txt2img_func = txt2img
-                txt2img_inputs = [txt2img_prompt, txt2img_steps, txt2img_sampling, txt2img_toggles,
+            txt2img_inputs = [txt2img_prompt, txt2img_style_prompt, txt2img_steps, txt2img_sampling, txt2img_toggles,
                                   txt2img_realesrgan_model_name, txt2img_ddim_eta, txt2img_batch_count,
                                   txt2img_batch_size, txt2img_cfg, txt2img_seed, txt2img_height, txt2img_width,
                                   txt2img_embeddings, txt2img_variant_amount, txt2img_variant_seed]

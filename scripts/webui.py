@@ -2368,6 +2368,7 @@ txt2img_defaults = {
     'variant_amount': 0.0,
     'variant_seed': '',
     'submit_on_enter': 'Yes',
+    'style prompt': 'on artstation, on deviantart, masterful art, extremely detailed, digital art'
 }
 
 if 'txt2img' in user_defaults:

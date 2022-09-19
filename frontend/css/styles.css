@@ -14,15 +14,18 @@
     background: none;
     border: none;
 }
-#prompt_input, #img2img_prompt_input {
+#prompt_input, #img2img_prompt_input, #style_prompt_input {
     padding: 0px;
     border: none;
 }
 
 #prompt_row input,
-#prompt_row textarea {
+#prompt_row textarea,
+#style_prompt_row input,
+#style_prompt_row textarea {
     font-size: 1.2rem;
     line-height: 1.6rem;
+    word-wrap: normal;
 }
 
 input[type=number]:disabled { -moz-appearance: textfield; }
